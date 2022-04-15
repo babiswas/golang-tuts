@@ -1,0 +1,21 @@
+package main
+import "fmt"
+import "bufio"
+import "os"
+
+func check(err){
+  if err!=nil{
+    panic(err)
+  }
+}
+
+func main(){
+   f,err:=os.Open(os.Args[1])
+   defer f.Close()
+   check(err)
+   scanner:=bufio.NewScanner(f)
+   for scanner.Scan(){
+      line:=scanner.Text()
+      fmt.Println(line)
+   }
+}
